@@ -20,7 +20,7 @@ require 'contorller/bdconfig.php';
                 <div class="sidebar-content">
                     <!-- User menu -->
                     <div class="sidebar-user">
-                        <div class="category-content">
+                        <div class="designation-content">
                             <div class="media">
                                 <a href="#" class="media-left"><img src="assets/images/placeholder.jpg"
                                         class="img-circle img-sm" alt=""></a>
@@ -68,12 +68,12 @@ require 'contorller/bdconfig.php';
 
                         </div>
                         <div class="panel-body mt-5">
-                            <form class="form-horizontal" action="contorller/categoryController.php" method="POST"
+                            <form class="form-horizontal" action="contorller/designatonController.php" method="POST"
                                 enctype="multipart/form-data">
                                 <?php 
-                                if(isset($_GET['category_id'])){
-                                    $category_id = $_GET['category_id'];
-                                    $getSinglDataQry = "SELECT * FROM categories WHERE id='{$category_id}'";
+                                if(isset($_GET['designation_id'])){
+                                    $designation_id = $_GET['designation_id'];
+                                    $getSinglDataQry = "SELECT * FROM designatoins WHERE id='{$designation_id}'";
                                     $getResult = mysqli_query($dbcon,$getSinglDataQry);
                                 }
                                 ?>
@@ -89,16 +89,18 @@ require 'contorller/bdconfig.php';
                                     </div>
                                     <?php }?>
                                     <?php
-                                    foreach($getResult as $key => $category){
+                                    foreach($getResult as $key => $designation){
                                         
                                     ?>
-                                    <input type="hidden" class="form-control" name="category_id"
-                                        value="<?php echo $category['id']?>">
+                                    <input type="hidden" class="form-control" name="designation_id"
+                                        value="<?php echo $designation['id']?>">
                                     <div class="form-group mt-10">
-                                        <label class="control-label col-lg-2" for="category_name">Category Name</label>
+                                        <label class="control-label col-lg-2" for="designation_name">designation
+                                            Name</label>
                                         <div class="col-lg-10">
-                                            <input type="text" id="category_name" class="form-control"
-                                                name="category_name" value="<?php echo $category['category_name']?>">
+                                            <input type="text" id="designation_name" class="form-control"
+                                                name="designation_name"
+                                                value="<?php echo $designation['designation_name']?>">
                                         </div>
                                     </div>
 
@@ -108,7 +110,7 @@ require 'contorller/bdconfig.php';
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary"
                                         name="updateDesignation">Submit</button>
-                                    <a href="category_list.php" class="btn btn-default ml-5">Back to List</a>
+                                    <a href="designation_list.php" class="btn btn-default ml-5">Back to List</a>
                                 </div>
                             </form>
                         </div>

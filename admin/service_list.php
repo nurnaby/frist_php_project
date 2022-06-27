@@ -1,10 +1,8 @@
 <?php
+$page = 'service';
 include 'contorller/bdconfig.php';
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +102,8 @@ include 'contorller/bdconfig.php';
                                         <td class="text-center">
                                             <a href="serviceUpdate.php?service_id=<?php echo $service['id'];?>"><i
                                                     class=" icon-pencil5"></i></a>
-                                            <a href="#"><i class=" icon-trash"></i></a>
+                                            <a href="serviceDelet.php?service_id=<?php echo $service['id'];?>"><i
+                                                    class=" icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>

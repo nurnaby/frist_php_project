@@ -1,4 +1,5 @@
 <?php
+$page = 'staff';
 include 'contorller/bdconfig.php';
 
 ?>
@@ -105,16 +106,17 @@ include 'contorller/bdconfig.php';
                                 </thead>Our staff
                                 <tbody>
                                     <?php 
-                                    $selectQuery= "SELECT * FROM `our_staff` WHERE 1";
+                                    $selectQuery= "SELECT our_staff.*,designatoins.designation_name FROM `our_staff` 
+                                    INNER JOIN designatoins ON our_staff.designation_id = designatoins.id
+                                    WHERE our_staff.active_status= 1";
                                     $staff_list=mysqli_query($dbcon,$selectQuery);
-
                                   foreach($staff_list as $key =>$staff){
                                     
                                     ?>
                                     <tr>
                                         <td><?php echo ++$key;?></td>
                                         <td><?php echo $staff['staff_name'];?></td>
-                                        <td><?php echo $staff['designation_id'];?></td>
+                                        <td><?php echo $staff['designation_name'];?></td>
                                         <td><?php echo $staff['instagram'];?></td>
                                         <td><?php echo $staff['twitter'];?></td>
                                         <td><?php echo $staff['facebook'];?></td>
@@ -126,9 +128,9 @@ include 'contorller/bdconfig.php';
 
                                         </td>
                                         <td class="text-center">
-                                            <a href="bannerUpdate.php?banner_id=<?php echo $staff['id'];?>"><i
+                                            <a href="staffUpdate.php?staff_id=<?php echo $staff['id'];?>"><i
                                                     class=" icon-pencil5"></i></a>
-                                            <a href="bannerDelete.php?banner_id=<?php echo $staff['id'];?>"><i
+                                            <a href="staffDelete.php?staff_id=<?php echo $staff['id'];?>"><i
                                                     class=" icon-trash"></i></a>
                                         </td>
                                     </tr>

@@ -1,4 +1,5 @@
 <?php
+$page = 'contact';
 include 'contorller/bdconfig.php';
 
 ?>

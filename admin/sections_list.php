@@ -1,4 +1,5 @@
 <?php
+$page = 'sections';
 include 'contorller/bdconfig.php';
 
 ?>
@@ -100,7 +101,7 @@ include 'contorller/bdconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    $selectQuery= "SELECT * FROM sections";
+                                    $selectQuery= "SELECT * FROM sections WHERE section_staus=1";
                                     $section_list=mysqli_query($dbcon,$selectQuery);
                                   foreach($section_list as $key =>$section){
                                     

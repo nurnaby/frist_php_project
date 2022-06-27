@@ -23,24 +23,28 @@ require 'bdconfig.php';
  }
 // This update section 
 
- if(isset($_POST['updateCategory'])){
+if(isset($_POST['updateDesignation'])){
 
     $category_id = $_POST['category_id'];
-    
+    $category_name      = $_POST['category_name'];
+   
 
-   if(empty($title)){
-    echo 'filed are required';
+   if(empty($category_name)){
+    echo 'All filed are required';
 
         }else{
 
-            $updatequery= "UPDATE categories set category_name='{$category_name}' WHERE id='{$category_id}'";
+            $updatequery= "UPDATE categories set 	category_name='{$category_name}' WHERE id='{$category_id}'";
+
+        // $insertquery= "INSERT INTO sections(title,sub_title,details,page_no) VALUES ('{$title}','{$sub_title}','{$details}','{$page_no}')";
+
         $issubmit=mysqli_query($dbcon,$updatequery);
         if($issubmit){
             $message= 'category update succesful';
         }else{
-            $message= 'category failed';
+            $message= 'section failed';
         }
-        header("Location:../CategoryUpdate.php?category_id={$category_id}&msg={$message}");
+        header("Location:../categoryUpdate.php?category_id={$category_id}&msg={$message}");
 
         }
  }

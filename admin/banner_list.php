@@ -1,4 +1,5 @@
 <?php
+$manuName ="banner";
 include 'contorller/bdconfig.php';
 
 ?>
@@ -102,7 +103,7 @@ include 'contorller/bdconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    $selectQuery= "SELECT * FROM banners";
+                                    $selectQuery= "SELECT * FROM banners WHERE active_status=1";
                                     $banner_list=mysqli_query($dbcon,$selectQuery);
                                   foreach($banner_list as $key =>$banner){
                                     

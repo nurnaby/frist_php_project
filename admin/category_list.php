@@ -1,4 +1,5 @@
 <?php
+$page = 'category';
 include 'contorller/bdconfig.php';
 
 ?>
@@ -89,7 +90,7 @@ include 'contorller/bdconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    $selectQuery= "SELECT * FROM categories";
+                                    $selectQuery= "SELECT * FROM categories WHERE active_status=1";
                                     $category_list=mysqli_query($dbcon,$selectQuery);
                                   foreach($category_list as $key =>$category){
                                     
@@ -101,7 +102,8 @@ include 'contorller/bdconfig.php';
                                         <td class="text-center">
                                             <a href="categoryUpdate.php?category_id=<?php echo $category['id'];?>"><i
                                                     class=" icon-pencil5"></i></a>
-                                            <a href="#"><i class=" icon-trash"></i></a>
+                                            <a href="categoryDelet.php?category_id=<?php echo $category['id'];?>"><i
+                                                    class=" icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>

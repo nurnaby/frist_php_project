@@ -1,4 +1,5 @@
 <?php
+$page = 'project';
 include 'contorller/bdconfig.php';
 
 ?>
@@ -122,9 +123,9 @@ include 'contorller/bdconfig.php';
 
                                         </td>
                                         <td class="text-center">
-                                            <a href="bannerUpdate.php?banner_id=<?php echo $Project['id'];?>"><i
+                                            <a href="projectUpdate.php?project_id=<?php echo $Project['id'];?>"><i
                                                     class=" icon-pencil5"></i></a>
-                                            <a href="bannerDelete.php?banner_id=<?php echo $Project['id'];?>"><i
+                                            <a href="projectDelete.php?project_id=<?php echo $Project['id'];?>"><i
                                                     class=" icon-trash"></i></a>
                                         </td>
                                     </tr>

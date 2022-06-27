@@ -1,4 +1,5 @@
 <?php
+$page = 'designations';
 include 'contorller/bdconfig.php';
 
 ?>
@@ -70,7 +71,7 @@ include 'contorller/bdconfig.php';
                             <h5 class="panel-title">Section List</h5>
                             <div class="heading-elements">
                                 <ul class="icons-list">
-                                    <a href="sectionCreat.php" class="btn btn-primary mb-1">Add New</a>
+                                    <a href="designationsCreat.php" class="btn btn-primary mb-1">Add New</a>
                                     <!-- <li><a data-action="collapse"></a></li>
                                     <li><a data-action="reload"></a></li>
                                     <li><a data-action="close"></a></li> -->
@@ -89,7 +90,7 @@ include 'contorller/bdconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    $selectQuery= "SELECT * FROM designatoins";
+                                    $selectQuery= "SELECT * FROM designatoins WHERE active_status=1";
                                     $designatoins_list=mysqli_query($dbcon,$selectQuery);
                                   foreach($designatoins_list as $key =>$designatoins){
                                     
@@ -99,9 +100,12 @@ include 'contorller/bdconfig.php';
                                         <td><?php echo $designatoins['designation_name'];?></td>
 
                                         <td class="text-center">
-                                            <a href="sectionUpdate.php?section_id=<?php echo $designatoins['id']?>"><i
+                                            <a
+                                                href="designationsUpdate.php?designation_id=<?php echo $designatoins['id']?>"><i
                                                     class=" icon-pencil5"></i></a>
-                                            <a href="#"><i class=" icon-trash"></i></a>
+                                            <a
+                                                href="designationsDelete.php?designation_id=<?php echo $designatoins['id']?>"><i
+                                                    class=" icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>
@@ -122,6 +126,20 @@ include 'contorller/bdconfig.php';
     </div>
     <!-- /page container -->
     <?php include 'includes/script.php'; ?>
+    <script type="text/javascript">
+    // $('#courseTable').DataTable();
+
+    $('#courseTable').DataTable({
+        dom: 'lBfrtip',
+        "iDisplayLength": 10,
+        "lengthMenu": [10, 25, 30, 50],
+        columnDefs: [{
+            'orderable': false,
+            "targets": 5
+        }]
+    });
+    </script>
+
 </body>
 
 </html>
